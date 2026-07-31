@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PedidosApiApp.Data;
+using PedidosApiApp.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddControllers();
 // Registrar AppDbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSql")));
+
+// Registrar cliente HTTP para validación externa
+builder.Services.AddHttpClient<IServicioValidacionCliente, ServicioValidacionCliente>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
