@@ -1,3 +1,6 @@
+USE SistemaPedidosDb;
+GO
+  
 SELECT 
 TOP (1000) [Id]
 ,[ClienteId]
